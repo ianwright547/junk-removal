@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from content_areas import AREAS
 from content_services import SERVICES
 from content_blog import POSTS
+from content_core import CORE
 
 SITE  = os.environ.get("SITE_URL", "https://curbsidehaulco.com").rstrip("/")
 BRAND = "Curbside Haul Co."
@@ -38,9 +39,9 @@ def nav():
     <ul>
       <li><a href="/services">Services</a></li>
       <li><a href="/areas">Areas</a></li>
+      <li><a href="/pricing">Pricing</a></li>
       <li><a href="/blog">Guides</a></li>
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/contact">Contact</a></li>
     </ul>
     <a class="phone" href="tel:{PHONE_LINK}">{PHONE_DISPLAY}</a>
     <a class="btn btn-go" href="/#quote">Get a free quote</a>
@@ -59,7 +60,7 @@ def footer():
       </div>
       <div><h4>Services</h4><ul>{svc}<li><a href="/services">All services</a></li></ul></div>
       <div><h4>Areas</h4><ul>{ars}</ul></div>
-      <div><h4>Company</h4><ul><li><a href="/blog">Guides</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#quote">Free quote</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/same-day-junk-removal">Same-day service</a></li><li><a href="/contact">Contact</a></li><li><a href="/blog">Guides</a></li></ul></div>
     </div>
     <div class="legal">&copy; 2026 {E(BRAND)}. Licensed and insured. Business license #000000.</div>
   </div>
@@ -412,12 +413,47 @@ def build_sitemap(entries):
     (ROOT / "robots.txt").write_text(
       "\n\n".join(blocks) + f"\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
+# ----------------------------------------------------------------- core pages
+
+def build_core(c):
+    secs = "".join(
+        f'<h2 id="s{i}">{E(h2)}</h2>' + "".join(blocks)
+        for i, (h2, blocks) in enumerate(c["sections"], 1))
+    svc = "".join(f'<a class="chip" href="/services/{x["slug"]}">{E(x["name"])}</a>' for x in SERVICES[:10])
+    ars = "".join(f'<a class="chip" href="/areas/{x["slug"]}">{E(x["name"])}</a>' for x in AREAS)
+    cn, cld = crumbs([("Home", "/"), (c["name"], None)])
+    body = f"""{cn}
+<main>
+<section class="page-hero"><div class="wrap">
+  <h1>{E(c["h1"])}</h1>
+  <p class="lede">{E(c["blurb"])}</p>
+  <div class="cta-row">
+    <a class="btn btn-go" href="/#quote">Get a free quote</a>
+    <a class="btn btn-line" href="tel:{PHONE_LINK}">Call {PHONE_DISPLAY}</a>
+  </div>
+</div></section>
+
+<section class="prose-sec"><div class="wrap prose">{secs}</div></section>
+
+{faq_block(c["faqs"], f'{c["name"]} questions')}
+
+<section class="prose-sec"><div class="wrap prose">
+  <h2>Services</h2><div class="chip-row">{svc}<a class="chip" href="/services">All services</a></div>
+  <h2>Areas we cover</h2><div class="chip-row">{ars}</div>
+</div></section>
+{cta()}
+</main>"""
+    return page(path=c["slug"], title=fit_title(c.get("mt", c["h1"])),
+        desc=fit_desc(c["blurb"]), body=body, extra_ld=cld + faq_ld(c["faqs"]))
+
 def main():
     if "yourdomain" in SITE or SITE.endswith("curbsidehaulco.com"):
         print(f"!! SITE_URL is {SITE} - confirm this is the real production domain.", file=sys.stderr)
     entries = [("/", TODAY, "weekly", "1.0")]
     for u in build_indexes():
         entries.append((u, TODAY, "weekly", "0.8"))
+    for c in CORE:
+        entries.append((build_core(c), TODAY, "monthly", "0.9"))
     for a in AREAS:
         entries.append((build_area(a), TODAY, "monthly", "0.9"))
     for s in SERVICES:
@@ -426,8 +462,9 @@ def main():
         entries.append((build_post(p), p["date"], "yearly", "0.6"))
     build_sitemap(entries)
     print(f"built {len(entries)} URLs")
-    print(f"  {len(AREAS)} areas, {len(SERVICES)} services, {len(POSTS)} posts, 3 indexes")
-    print(f"  {sum(len(a['faqs']) for a in AREAS) + sum(len(s['faqs']) for s in SERVICES)} FAQs in schema")
+    print(f"  {len(AREAS)} areas, {len(SERVICES)} services, {len(POSTS)} posts, {len(CORE)} core, 3 indexes")
+    total = sum(len(x['faqs']) for x in AREAS) + sum(len(x['faqs']) for x in SERVICES) + sum(len(x['faqs']) for x in CORE)
+    print(f"  {total} FAQs in schema")
 
 if __name__ == "__main__":
     main()
