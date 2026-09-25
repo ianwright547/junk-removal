@@ -559,13 +559,16 @@ footer .legal{border-top:1px solid #2b3831;margin-top:36px;padding-top:18px;font
   }
   if('IntersectionObserver' in window){new IntersectionObserver(function(e){if(e[0].isIntersecting)count()},{threshold:.4}).observe(facts)}else count();
 
-  // job photos: loads img/job-1.jpg ... job-8.jpg, skips any that don't exist, hides the section if none do
+  // job photos: drop img/job-1 ... job-12 into the repo in any common format and they show up
   (function(){
     var gal=document.getElementById('gal'),sec=document.getElementById('jobs');
-    for(var i=1;i<=8;i++){(function(n){
+    var exts=['jpg','jpeg','JPG','JPEG','png','PNG','webp','WEBP','avif'];
+    for(var i=1;i<=12;i++){(function(n){
+      var e=0;
       var img=new Image();img.alt='Junk removal job photo '+n;img.loading='lazy';
       img.onload=function(){var f=document.createElement('figure');f.style.order=n;f.appendChild(img);gal.appendChild(f);sec.classList.add('has')};
-      img.src='img/job-'+n+'.jpg';
+      img.onerror=function(){if(++e<exts.length)img.src='img/job-'+n+'.'+exts[e]};
+      img.src='img/job-'+n+'.'+exts[0];
     })(i)}
   })();
 
