@@ -1,0 +1,167 @@
+# Service pages. Each targets a distinct search intent. The FAQs answer what
+# people actually ask before booking that specific service, not generic filler.
+
+SERVICES = [
+{
+ "slug":"furniture-removal","name":"Furniture Removal","h1":"Furniture Removal in Orlando",
+ "blurb":"Sofas, sectionals, mattresses, dining sets and anything else too heavy or too awkward to move yourself.",
+ "intro":[
+  "Furniture is the single most common thing we haul, and it is the thing people most often try to handle themselves before calling. A sectional that came in through a sliding door in three pieces does not go out the front door in one.",
+  "You do not lift anything. Point at it, we carry it out from wherever it sits, including upstairs, and we pad the doorways and corners on the way."],
+ "takes":["Sofas, loveseats and sectionals","Mattresses and box springs","Dining tables and chairs","Dressers, wardrobes and armoires","Desks and office chairs","Recliners and sleeper sofas","Bed frames and headboards","Patio and outdoor furniture"],
+ "faqs":[
+  ("How much does it cost to remove a sofa?","Price is set by how much of the truck the item fills, not by the item's name. A single sofa is a partial load. You get the number before anything is loaded."),
+  ("Do I have to move it to the curb?","No. That is the point of hiring us. We carry it from the room it is in, including a second or third floor, at no extra charge for stairs."),
+  ("Will you damage my walls getting a sectional out?","We pad door frames and corners and we take pieces apart when that is the safer route. If something genuinely will not fit through the opening without damage, we stop and tell you before we force it."),
+  ("Can you take a sleeper sofa? They are extremely heavy.","Yes. Sleeper sofas and recliners are heavier than they look because of the steel mechanism inside. We send enough crew rather than trying to hero it with two people."),
+  ("Does my old furniture get donated?","Where it can be. Clean, structurally sound furniture goes to local donation partners. Anything stained, broken, smoke-damaged or infested will not be accepted by a charity, and we will be honest with you about which yours is."),
+  ("Can you take just one chair?","Yes. Single items are normal work and priced as a partial load, not a full truck."),
+  ("Do you take furniture from an apartment on the third floor?","Yes, and stairs do not cost extra. Tell us the floor when you book so we bring the right crew size."),
+  ("What about a piano or a pool table?","Usually yes, but both need a look first. Send a photo and tell us whether stairs are involved and we will give you a straight answer before you book.")],
+ "related":["mattress-removal","appliance-removal","estate-cleanout"],
+},
+{
+ "slug":"appliance-removal","name":"Appliance Removal","h1":"Appliance Removal and Disposal in Orlando",
+ "blurb":"Refrigerators, washers, dryers, water heaters and window units, disconnected where safe and recycled properly.",
+ "intro":[
+  "Appliances are heavy, awkward, and in Florida they are also a regulatory problem. Anything with refrigerant in it cannot legally go in a landfill without the refrigerant being recovered first, which is why a lot of places will not take your old fridge.",
+  "We route refrigerant appliances through a recycler that handles that step, and metal appliances get recycled rather than dumped."],
+ "takes":["Refrigerators and freezers","Washers and dryers","Dishwashers","Ovens, ranges and cooktops","Water heaters","Window and portable AC units","Microwaves","Small appliances in bulk"],
+ "faqs":[
+  ("Can you take a refrigerator?","Yes. Fridges and freezers contain refrigerant that has to be recovered by a certified recycler before the unit can be scrapped, and we route them accordingly instead of dumping them."),
+  ("Do you disconnect the appliance?","We will unplug a unit and disconnect a simple water line. We do not disconnect hard-wired electrical or gas. Gas appliances need the gas line capped by a licensed plumber before we touch them, and we will not cut corners on that."),
+  ("Will you take a water heater?","Yes. Drain it before we arrive if you can, because a full one holds forty or more gallons and is genuinely dangerous to carry."),
+  ("Does the appliance get recycled or landfilled?","Metal appliances are mostly steel, which recycles cleanly and has real scrap value, so recycling is both better and cheaper than landfilling. Refrigerant units go through the recovery process first."),
+  ("Can you take a working appliance to donation instead?","Yes, and tell us if it works, because it changes where it goes. Donation partners want working units and cannot use dead ones."),
+  ("How much does appliance removal cost?","By volume, like everything else. A single appliance is a partial load. You get the number before we load."),
+  ("Can you get a fridge out of a second-floor apartment?","Yes. Stairs are included. Tell us the floor when you book."),
+  ("Do you take old tube TVs and electronics?","Yes. Electronics go to an e-waste recycler. Old CRT televisions are heavy and contain leaded glass, which is exactly why they should not go in a dumpster.")],
+ "related":["furniture-removal","garage-cleanout","construction-debris-removal"],
+},
+{
+ "slug":"mattress-removal","name":"Mattress Removal","h1":"Mattress Removal and Disposal in Orlando",
+ "blurb":"Mattresses and box springs taken away the same visit, recycled where possible.",
+ "intro":[
+  "Mattresses are the item people most often discover they cannot get rid of. They are too big for a regular trash pickup, most transfer stations charge a separate fee for them, and a mattress left at a curb in Florida becomes a wet mattress very quickly.",
+  "They are also one of the most recyclable things we handle. The steel, foam and fibre inside can be separated and reused, so a mattress that goes to a recycler mostly does not go to a landfill at all."],
+ "takes":["Twin through California King mattresses","Box springs and foundations","Memory foam and hybrid mattresses","Futons and sofa bed mattresses","Crib mattresses","Bed frames and headboards","Multiple mattresses for rentals","Adjustable bed bases"],
+ "faqs":[
+  ("Why can't I just put a mattress on the curb?","In most places a standard trash service will not take one, and in an HOA or an incorporated city like Belle Isle leaving one out can get you a citation. It also soaks up rain within hours and becomes far heavier and far worse to handle."),
+  ("Do mattresses get recycled?","Where a recycler will take them, yes. Steel springs, foam and fibre can all be separated and reused. A mattress that is soaked, mouldy or infested will be rejected by a recycler and has to be landfilled."),
+  ("Will you take a mattress with bed bugs?","Tell us before we arrive. It changes how we bag and handle it and where it can go. What we cannot do is take an infested mattress through your house unwrapped and into a truck with other people's furniture, so honesty here protects everyone."),
+  ("How much to remove one mattress?","A single mattress and box spring is a small partial load. You get the price up front."),
+  ("Can you take several at once?","Yes. Rentals and property managers replace mattresses in batches and we are set up for it. Give us the count and sizes."),
+  ("Do you take the frame too?","Yes. Metal frames, wooden slats and headboards all go in the same trip."),
+  ("Do I need to move it outside first?","No. We take it from the bedroom, including upstairs."),
+  ("Can you come the same day?","Usually in Lake Nona and nearby. Further out like Kissimmee it depends on the day's schedule, and we will tell you honestly rather than promise.")],
+ "related":["furniture-removal","estate-cleanout","appliance-removal"],
+},
+{
+ "slug":"garage-cleanout","name":"Garage Cleanout","h1":"Garage Cleanout Services in Orlando",
+ "blurb":"Get the garage back. We clear it in one visit and sweep it out when we are done.",
+ "intro":[
+  "A garage cleanout is the job people put off longest, because the pile is intimidating and because sorting it feels like it has to happen before anything can move. It does not. We sort as we load.",
+  "You tell us what stays. Everything else goes, and you get a swept floor and a garage you can actually park in at the end of the day."],
+ "takes":["Boxes and stored household goods","Old furniture and appliances","Bikes, sports and exercise equipment","Lawn equipment and mowers","Scrap metal and old tools","Paint cans (empty and dried only)","Broken shelving and storage racks","Tires (tell us the count)"],
+ "faqs":[
+  ("How long does a garage cleanout take?","Most single-car garages are a couple of hours. A packed two-car garage with an attic above it can be a half day. We will give you a realistic window when we see it, not an optimistic one."),
+  ("Do I need to sort everything first?","No. Point out what stays and we work around it. Most people find sorting is the reason the garage has stayed full for three years."),
+  ("Can you take paint?","Only if it is fully dried out or the can is empty. Liquid paint is household hazardous waste and needs a proper drop-off. You can dry small amounts yourself with cat litter and then we can take the can."),
+  ("What about old gasoline and propane tanks?","Neither. Fuel, propane, solvents and pesticides all need household hazardous waste disposal. We will point out anything in your pile we cannot take before we start, not after we have quoted you."),
+  ("Do you sweep up?","Yes, broom-swept. A garage that has been packed for twenty years will need more than a broom to look new, but you will not be cleaning up after us."),
+  ("Can you take the shelving and cabinets too?","Yes, including taking them off the wall. Tell us if they are going so we bring tools."),
+  ("What happens to the usable stuff?","Working tools, bikes, sports equipment and furniture go to donation partners where they can. Metal goes to a recycler. What is genuinely finished goes to the landfill last, not first."),
+  ("How much does a garage cleanout cost?","By how much of the truck it fills. A partial garage might be a half load, a full one might be more than a truck. You get the price before we load anything.")],
+ "related":["estate-cleanout","storage-unit-cleanout","appliance-removal"],
+},
+{
+ "slug":"estate-cleanout","name":"Estate Cleanout","h1":"Estate Cleanout Services in Orlando",
+ "blurb":"Whole-house clearing handled carefully, at your pace, when a property has to be emptied.",
+ "intro":[
+  "Estate cleanouts are usually happening at a bad time. Somebody has died, or is moving into care, and the house has to be empty by a date that somebody else set. We try to make our part of it the easy part.",
+  "We go at the speed you want. Anything you want to keep gets set aside, and if we come across something that looks like it might matter, documents, photographs, jewellery, we stop and show you rather than make the call ourselves."],
+ "takes":["Whole-house contents","Furniture from every room","Appliances","Garage, attic and shed contents","Clothing and linens","Books, papers and files","Yard and patio items","Anything left after the family has taken what they want"],
+ "faqs":[
+  ("How does an estate cleanout work?","We walk the property with you first and agree what stays. Then we clear room by room. You do not have to be there for the whole thing, but most people want to be there at the start."),
+  ("What if you find something valuable?","We stop and show you. We do not make judgement calls about what matters to your family. Documents, photographs, jewellery and anything that looks personal gets set aside for you to decide on."),
+  ("Can you get me a donation receipt?","Yes. Usable furniture, working appliances, clothing and household goods go to local donation partners, and we can get you a receipt for what was donated."),
+  ("How much does a whole-house cleanout cost?","It depends on the volume, and these are almost always multiple truckloads. We would rather walk it or see photos and give you a real number than quote blind and revise it upward on the day."),
+  ("How fast can you do it?","A small house can be a day. A large one with a full garage and attic can be two or three. If you have a closing date or a landlord deadline, tell us and we will tell you honestly whether we can hit it."),
+  ("Do I need to be there?","Not for the whole job. Plenty of estate cleanouts are handled by an out-of-state family member with a realtor or neighbour letting us in. We send photos throughout and when we finish."),
+  ("Can you work with a realtor or an attorney?","Yes. We are used to working to a closing date and coordinating with whoever is managing the estate."),
+  ("What will you not take?","Hazardous material: paint, solvents, fuel, pesticides, propane, ammunition and medical sharps. Older homes often have all of these in a garage. We will identify them and tell you where they need to go.")],
+ "related":["garage-cleanout","furniture-removal","storage-unit-cleanout"],
+},
+{
+ "slug":"hot-tub-removal","name":"Hot Tub Removal","h1":"Hot Tub Removal in Orlando",
+ "blurb":"Drained, cut down and hauled away, including the surround and decking if that is going too.",
+ "intro":[
+  "A hot tub that has stopped being used becomes a problem fast in Florida. It holds water, it breeds mosquitoes, and it is far too heavy and too awkward for a couple of people and a pickup truck.",
+  "We drain what is left, cut it into pieces we can carry, and haul the whole thing. If there is decking or a surround built around it, that can go in the same visit."],
+ "takes":["Above-ground hot tubs and spas","Swim spas","Hot tub covers and lifters","Surrounding decking and steps","Above-ground pools","Pumps, heaters and equipment","Concrete pads (ask first)","Associated electrical housing (disconnected by an electrician first)"],
+ "faqs":[
+  ("Do I need to drain it first?","It helps a lot. A full hot tub holds hundreds of gallons and we cannot move it with water in it. If you cannot drain it, tell us and we will plan for it, but it adds time."),
+  ("Do you disconnect the electrical?","No. Hot tubs are usually on a dedicated 240V circuit and that needs a licensed electrician to disconnect safely. Have that done before we arrive. We will not cut a live line."),
+  ("Do you cut it up or take it whole?","Almost always cut up. A whole tub does not fit through a side gate and does not lift onto a truck without equipment. Cutting it down is faster, safer and cheaper than craning it out."),
+  ("Can you take the deck around it?","Yes, and mention it when you ask for a quote because the deck is often the bigger half of the job."),
+  ("What about the concrete pad underneath?","Sometimes. Concrete is extremely heavy and pricing works differently. Tell us the pad size and thickness and we will give you a separate number for it."),
+  ("How long does it take?","Most straightforward above-ground tubs are a few hours once it is drained and disconnected. Add time for decking or difficult access."),
+  ("Can you get it out through a narrow side gate?","That is exactly why we cut it down. Tell us the narrowest point on the route out and we will size the pieces to fit."),
+  ("Do you remove in-ground spas?","That is demolition rather than removal and usually needs a contractor. We will tell you straight if your job is outside what we do.")],
+ "related":["construction-debris-removal","shed-removal","garage-cleanout"],
+},
+{
+ "slug":"construction-debris-removal","name":"Construction Debris Removal","h1":"Construction Debris Removal in Orlando",
+ "blurb":"Renovation and build debris cleared without tying up a dumpster on the street for a week.",
+ "intro":[
+  "For a lot of renovation jobs a dumpster is the wrong tool. It sits in the driveway for a week, it may need a permit if it goes on the street, and you pay for it whether it is full or not.",
+  "We come when the debris exists, load it, and leave. For contractors running several jobs, that usually works out cheaper and it keeps the site clear."],
+ "takes":["Drywall and plaster","Lumber, trim and framing offcuts","Flooring: tile, carpet, laminate, hardwood","Cabinets and countertops","Fixtures, sinks and toilets","Roofing material (ask first)","Siding and fencing","Packaging, pallets and general site waste"],
+ "faqs":[
+  ("Is this cheaper than renting a dumpster?","Often, for small and mid-size jobs. A dumpster makes sense when debris accumulates over weeks. We make more sense when it arrives in bursts, because you only pay for what we actually haul."),
+  ("Do you take concrete and brick?","In limited amounts. Heavy material is priced by weight rather than volume because it fills the truck's weight limit long before its space. Tell us roughly how much and we will give you a real number."),
+  ("Can you handle a roof tear-off?","Ask us first. Shingles are heavy and quantity matters enormously. A small section is fine. A whole roof usually wants a dedicated dumpster."),
+  ("What about asbestos?","We do not touch it. Pre-1980s flooring, pipe wrap, ceiling texture and some siding can contain asbestos. It needs testing and a licensed abatement contractor. Any hauler who offers to just take it is putting you and their crew at risk."),
+  ("Do you work with contractors on ongoing jobs?","Yes. If you are running multiple sites, one contact and scheduled pickups usually works better than a dumpster per job."),
+  ("Can you come same day mid-renovation?","Often, especially in Lake Nona and nearby. Tell us what you have and we will tell you the earliest we can realistically be there."),
+  ("Do you sweep the site?","We broom-sweep the area we cleared. We are not a post-construction cleaning service, and we will say so rather than let you expect one."),
+  ("What about paint, solvents and adhesives?","Not those. Liquid paint, solvents, adhesives and fuel are hazardous waste and need a proper drop-off, whatever the job.")],
+ "related":["shed-removal","hot-tub-removal","appliance-removal"],
+},
+{
+ "slug":"shed-removal","name":"Shed Removal and Demolition","h1":"Shed Removal and Demolition in Orlando",
+ "blurb":"Rotted, storm-damaged or simply unwanted sheds taken down and hauled in one visit.",
+ "intro":[
+  "Florida is hard on sheds. Heat, humidity and storms take a wooden shed apart over a few years, and once the roof goes the rest follows fast. A shed that has reached that stage is not safe to disassemble casually.",
+  "We take it down and haul the material in the same visit, including whatever has been stored inside it."],
+ "takes":["Wood and metal sheds","Storm-damaged structures","Shed contents","Playsets and swing sets","Gazebos and pergolas","Fencing and posts","Above-ground pools","Concrete pads (ask first)"],
+ "faqs":[
+  ("Do you demolish the shed or only haul it?","We take it down. Wood and metal sheds of normal backyard size are routine work."),
+  ("What about the concrete pad underneath?","Ask us separately. Concrete is heavy and priced differently from ordinary debris. Tell us the dimensions and thickness."),
+  ("Can you clear out what is inside first?","Yes, and it is usually the same job. Sheds tend to be full of exactly the mix of old paint, fuel cans and pesticide we cannot take, so we will identify those before we start."),
+  ("Is a permit needed to demolish a shed?","For a small accessory structure usually not, but it depends on your municipality, and Belle Isle and St. Cloud set their own rules. Check with your local building department. We will not tell you it is fine when we do not know."),
+  ("How long does it take?","Most backyard sheds are a half day including the haul. Storm-damaged ones can be quicker to take apart but messier to clean up."),
+  ("Can you get to a shed in a fenced back yard?","Usually. Tell us the width of the narrowest gate and we will size the pieces to fit through it."),
+  ("Do you take playsets and swing sets?","Yes. Wooden playsets that kids have outgrown are one of our more common backyard jobs."),
+  ("What about a shed with a rotted floor?","Tell us. A rotted floor makes it unsafe to walk on and changes how we take it apart, so we would rather know before we arrive.")],
+ "related":["construction-debris-removal","hot-tub-removal","garage-cleanout"],
+},
+{
+ "slug":"storage-unit-cleanout","name":"Storage Unit Cleanout","h1":"Storage Unit Cleanout in Orlando",
+ "blurb":"Stop paying monthly for a unit you no longer want. We empty it and you close the account.",
+ "intro":[
+  "Storage units have a way of outliving their reason. People rent one during a move, then keep paying for years because emptying it means a weekend, a truck and somewhere to put everything.",
+  "We clear it in one visit so you can hand the key back. Bring us the unit number and access details and you do not have to be there."],
+ "takes":["Full unit contents","Furniture and mattresses","Boxes and stored household goods","Appliances","Business inventory and files","Sports and exercise equipment","Tools and equipment","Anything left after you take what you want"],
+ "faqs":[
+  ("Do I need to be at the unit?","No. Give us the facility, the unit number and the access code or gate details. We send photos when the unit is empty so you can close the account with confidence."),
+  ("How much does it cost to clear a storage unit?","By volume. A 5x10 is usually well under a truckload. A 10x20 packed to the ceiling can be more than one. Photos get you a far more accurate number than a description."),
+  ("Can you do it the same day I call?","Often, though it depends on the facility's access hours as much as our schedule. Some facilities restrict move-out times, so check yours."),
+  ("Does anything get donated?","Yes, where it can be. Storage units are full of perfectly usable furniture and household goods, and that is a better outcome than a landfill."),
+  ("What if I want to keep a few things?","Mark them or tell us which they are and we will set them aside. We can leave them at the unit or load them separately, whichever you prefer."),
+  ("Can you clear a unit that has been auctioned or abandoned?","Yes, provided whoever is instructing us has the right to. We will need that confirmed by the facility or the lien holder before we touch anything."),
+  ("Will you take business inventory and files?","Yes. If files need to be destroyed rather than dumped, tell us, because that needs a shredding service and we will point you to one rather than pretend otherwise."),
+  ("Do you sweep the unit out?","Yes, broom-swept, which is what most facilities require before they will close your account without a cleaning fee.")],
+ "related":["garage-cleanout","estate-cleanout","furniture-removal"],
+},
+]
