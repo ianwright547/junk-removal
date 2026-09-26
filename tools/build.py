@@ -18,8 +18,8 @@ from content_services import SERVICES
 from content_blog import POSTS
 from content_core import CORE
 
-SITE  = os.environ.get("SITE_URL", "https://curbsidehaulco.com").rstrip("/")
-BRAND = "Curbside Haul Co."
+SITE  = os.environ.get("SITE_URL", "https://junkremovalsorlando.com").rstrip("/")
+BRAND = "Junk Removal Orlando"
 PHONE_DISPLAY, PHONE_LINK = "(321) 364-4254", "+13213644254"
 STREET, CITY, REGION, ZIP = "8305 Narcoossee Rd", "Orlando", "FL", "32827"
 TODAY = datetime.date.today().isoformat()
@@ -108,8 +108,14 @@ def cta():
 </div></section>"""
 
 def fit_title(core, limit=60):
-    """Append the brand only when the result still fits a SERP title."""
+    """Append the brand only when it fits and does not read as a repeat.
+
+    The brand is the same phrase as the primary keyword, so a title that already
+    says "junk removal" would otherwise become "Junk Removal in X | Junk Removal
+    Orlando", which reads as keyword stuffing."""
     core = core.strip()
+    if "junk removal" in core.lower():
+        return core if len(core) <= limit else core[:limit - 1].rsplit(" ", 1)[0]
     withbrand = f"{core} | {BRAND}"
     if len(withbrand) <= limit:
         return withbrand

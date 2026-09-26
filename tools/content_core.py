@@ -66,9 +66,9 @@ CORE = [
   ("Do you work weekends?","Yes, Monday through Saturday, 7am to 7pm.")],
 },
 {
- "slug":"about","name":"About","h1":"About Curbside Haul Co.",
+ "slug":"about","name":"About","h1":"About Junk Removal Orlando",
  "blurb":"A local junk removal crew working out of Lake Nona. What we do, how we price, and what we will tell you no about.",
- "mt":"About Curbside Haul Co.",
+ "mt":"About Junk Removal Orlando",
  "sections":[
   ("Who we are",[
    "<p>We are a junk removal company based at 8305 Narcoossee Rd in Orlando. We pick up junk. That is the whole business.</p>",
@@ -95,9 +95,9 @@ CORE = [
   ("Do you take payment up front?","No deposit to book. Payment on completion once you are satisfied.")],
 },
 {
- "slug":"contact","name":"Contact","h1":"Contact Curbside Haul Co.",
+ "slug":"contact","name":"Contact","h1":"Contact Junk Removal Orlando",
  "blurb":"Call, or send photos and get a quote back in minutes. Free estimates, no obligation, no deposit.",
- "mt":"Contact Curbside Haul Co.",
+ "mt":"Contact Junk Removal Orlando",
  "sections":[
   ("The fastest way to get a price",[
    "<p>Text photos of what needs to go. Four or five shots from different angles, including anything unusually heavy or awkward, and the address or ZIP code.</p>",

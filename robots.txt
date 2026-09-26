@@ -78,4 +78,4 @@ Allow: /
 User-agent: Slackbot
 Allow: /
 
-Sitemap: https://curbsidehaulco.com/sitemap.xml
+Sitemap: https://junkremovalsorlando.com/sitemap.xml
