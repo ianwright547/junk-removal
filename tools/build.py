@@ -127,7 +127,40 @@ def fit_desc(text, limit=155):
             return cut[:i + 1].strip()
     return cut.rsplit(" ", 1)[0].rstrip(",;:") + "."
 
-def page(*, path, title, desc, body, extra_ld="", og_type="website"):
+# Job photos. Captions describe what is visibly in the frame and nothing more:
+# these are reused across pages, so a caption must stay true wherever it lands.
+PHOTOS = [
+ ("job-1.jpg",  "Crew clearing a commercial unit in Orlando"),
+ ("job-2.jpg",  "Office cleanout in progress, boxes and bagged debris"),
+ ("job-3.jpg",  "Packing debris and boxes stacked ready for removal"),
+ ("job-4.jpg",  "Construction debris and wall panels from a retail strip-out"),
+ ("job-5.jpg",  "Trim, panels and framing stacked for haul-away"),
+ ("job-6.jpg",  "Residential room cleared to the walls"),
+ ("job-7.jpg",  "Bedroom cleared and swept"),
+ ("job-8.jpg",  "Living area cleared after a full cleanout"),
+ ("job-9.jpg",  "Hallway cleared through to the back of the property"),
+ ("job-10.jpg", "Cleared room, swept and empty"),
+]
+
+def photo_pick(key, n=3):
+    """Deterministic per-page selection, so each page leads with a different
+    photo instead of all 60-odd pages showing the same three."""
+    start = sum(ord(c) for c in key) % len(PHOTOS)
+    return [PHOTOS[(start + i) % len(PHOTOS)] for i in range(n)]
+
+def photo_strip(key, heading="Recent work"):
+    picks = photo_pick(key)
+    figs = "".join(
+        f'<figure><img src="/img/{f}" alt="{E(cap)}" loading="lazy" decoding="async" '
+        f'width="1500" height="2000"><figcaption>{E(cap)}</figcaption></figure>'
+        for f, cap in picks)
+    return f"""<section class="work"><div class="wrap">
+  <div class="sec-head"><h2>{E(heading)}</h2><p>Real jobs, not stock photography.</p>
+  <a class="btn btn-line" href="/#jobs">See more</a></div>
+  <div class="work-grid">{figs}</div>
+</div></section>"""
+
+def page(*, path, title, desc, body, extra_ld="", og_type="website", og_image="img/job-1.jpg"):
     url = f"{SITE}/{path}".rstrip("/") if path else SITE
     out = f"""<!DOCTYPE html>
 <html lang="en">
@@ -142,11 +175,11 @@ def page(*, path, title, desc, body, extra_ld="", og_type="website"):
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/img/job-1.jpg">
+<meta property="og:image" content="{SITE}/{og_image}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(title)}">
 <meta name="twitter:description" content="{E(desc)}">
-<meta name="twitter:image" content="{SITE}/img/job-1.jpg">
+<meta name="twitter:image" content="{SITE}/{og_image}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
@@ -213,6 +246,8 @@ def build_area(a):
   <div class="chip-row">{svc}</div>
 </div></section>
 
+{photo_strip(a["slug"], f'Recent work near {a["name"]}')}
+
 {faq_block(a["faqs"], f'{a["name"]} junk removal questions')}
 
 <section class="areas-sec"><div class="wrap">
@@ -223,7 +258,8 @@ def build_area(a):
 </main>"""
     return page(path=f'areas/{a["slug"]}', title=title,
         desc=fit_desc(f'{a["blurb"]} {a["drive"]} from our base. Free quotes, no trip fee.'),
-        body=body, extra_ld=cld + svc_ld + faq_ld(a["faqs"]))
+        body=body, extra_ld=cld + svc_ld + faq_ld(a["faqs"]),
+        og_image="img/" + photo_pick(a["slug"])[0][0])
 
 # ------------------------------------------------------------- service pages
 
@@ -261,6 +297,8 @@ def build_service(s):
   <ul class="take-list">{takes}</ul>
 </div></section>
 
+{photo_strip(s["slug"])}
+
 {faq_block(s["faqs"], f'{s["name"]} questions')}
 
 <section class="prose-sec"><div class="wrap prose">
@@ -272,7 +310,8 @@ def build_service(s):
 {cta()}
 </main>"""
     return page(path=f'services/{s["slug"]}', title=title, desc=fit_desc(s["blurb"]),
-        body=body, extra_ld=cld + svc_ld + faq_ld(s["faqs"]))
+        body=body, extra_ld=cld + svc_ld + faq_ld(s["faqs"]),
+        og_image="img/" + photo_pick(s["slug"])[0][0])
 
 # ----------------------------------------------------------------- blog posts
 
@@ -319,6 +358,8 @@ def build_post(p):
 </div></section>
 </article>
 
+{photo_strip(p["slug"], "From recent jobs")}
+
 <section class="prose-sec"><div class="wrap prose">
   <h2>Related guides</h2>
   <div class="post-grid">{rel}</div>
@@ -326,7 +367,8 @@ def build_post(p):
 {cta()}
 </main>"""
     return page(path=f'blog/{p["slug"]}', title=fit_title(p.get("mt", p["title"])),
-        desc=fit_desc(p["desc"]), body=body, extra_ld=cld + art_ld, og_type="article")
+        desc=fit_desc(p["desc"]), body=body, extra_ld=cld + art_ld, og_type="article",
+        og_image="img/" + photo_pick(p["slug"])[0][0])
 
 # ---------------------------------------------------------------- index pages
 
@@ -337,10 +379,11 @@ def build_indexes():
       f'<a class="post-card" href="/areas/{a["slug"]}"><strong>{E(a["name"])}</strong>'
       f'<span class="post-date">{E(a["drive"])} &middot; {E(a["zips"])}</span>'
       f'<span class="card-desc">{E(a["blurb"])}</span></a>' for a in AREAS)
+    IDX = "areas-index"
     cn, cld = crumbs([("Home", "/"), ("Service areas", None)])
     urls.append(page(path="areas", title=fit_title("Junk Removal Service Areas Near Orlando, FL"),
       desc=fit_desc("Lake Nona, Narcoossee, Conway, Belle Isle, St. Cloud and Kissimmee. What we haul in each and what it costs."),
-      extra_ld=cld,
+      extra_ld=cld, og_image="img/" + photo_pick(IDX)[0][0],
       body=f"""{cn}
 <main>
 <section class="page-hero"><div class="wrap">
@@ -348,16 +391,18 @@ def build_indexes():
   <p class="lede">We run out of {STREET} in {CITY}. These are the areas we cover without a trip fee, with what the work looks like in each.</p>
 </div></section>
 <section class="prose-sec"><div class="wrap"><div class="post-grid">{cards}</div></div></section>
+{photo_strip(IDX, "Recent work")}
 {cta()}
 </main>"""))
 
     cards = "".join(
       f'<a class="post-card" href="/services/{s["slug"]}"><strong>{E(s["name"])}</strong>'
       f'<span class="card-desc">{E(s["blurb"])}</span></a>' for s in SERVICES)
+    IDX = "services-index"
     cn, cld = crumbs([("Home", "/"), ("Services", None)])
     urls.append(page(path="services", title=fit_title("Junk Removal Services in Orlando, FL"),
       desc=fit_desc("Furniture, appliances, mattresses, garage and estate cleanouts, hot tubs, sheds and construction debris. Quoted before we load."),
-      extra_ld=cld,
+      extra_ld=cld, og_image="img/" + photo_pick(IDX)[0][0],
       body=f"""{cn}
 <main>
 <section class="page-hero"><div class="wrap">
@@ -365,6 +410,7 @@ def build_indexes():
   <p class="lede">If two people can lift it and it is not hazardous, it goes in the truck. Every service is priced the same way: by how much of the truck it fills, quoted before anything moves.</p>
 </div></section>
 <section class="prose-sec"><div class="wrap"><div class="post-grid">{cards}</div></div></section>
+{photo_strip(IDX, "Recent work")}
 {cta()}
 </main>"""))
 
@@ -373,10 +419,11 @@ def build_indexes():
       f'<a class="post-card" href="/blog/{p["slug"]}">'
       f'<span class="post-date">{datetime.date.fromisoformat(p["date"]).strftime("%B %-d, %Y")} &middot; {E(p["read"])}</span>'
       f'<strong>{E(p["title"])}</strong><span class="card-desc">{E(p["desc"])}</span></a>' for p in posts)
+    IDX = "guides-index"
     cn, cld = crumbs([("Home", "/"), ("Guides", None)])
     urls.append(page(path="blog", title=fit_title("Junk Removal Guides for Central Florida"),
       desc=fit_desc("Straight answers on junk removal costs, what haulers cannot take, storm debris and estate cleanouts near Orlando."),
-      extra_ld=cld,
+      extra_ld=cld, og_image="img/" + photo_pick(IDX)[0][0],
       body=f"""{cn}
 <main>
 <section class="page-hero"><div class="wrap">
@@ -384,6 +431,7 @@ def build_indexes():
   <p class="lede">What we tell people who call and ask. No filler, no padding, and we will tell you when the cheapest answer is not hiring us.</p>
 </div></section>
 <section class="prose-sec"><div class="wrap"><div class="post-grid">{cards}</div></div></section>
+{photo_strip(IDX, "Recent work")}
 {cta()}
 </main>"""))
     return urls
@@ -435,6 +483,8 @@ def build_core(c):
 
 <section class="prose-sec"><div class="wrap prose">{secs}</div></section>
 
+{photo_strip(c["slug"])}
+
 {faq_block(c["faqs"], f'{c["name"]} questions')}
 
 <section class="prose-sec"><div class="wrap prose">
@@ -444,7 +494,8 @@ def build_core(c):
 {cta()}
 </main>"""
     return page(path=c["slug"], title=fit_title(c.get("mt", c["h1"])),
-        desc=fit_desc(c["blurb"]), body=body, extra_ld=cld + faq_ld(c["faqs"]))
+        desc=fit_desc(c["blurb"]), body=body, extra_ld=cld + faq_ld(c["faqs"]),
+        og_image="img/" + photo_pick(c["slug"])[0][0])
 
 def main():
     if "yourdomain" in SITE or SITE.endswith("curbsidehaulco.com"):
