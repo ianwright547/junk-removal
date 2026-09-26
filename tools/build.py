@@ -56,7 +56,7 @@ def footer():
     <div class="cols">
       <div>
         <h4>{E(BRAND)}</h4>
-        <address class="nap">{E(BRAND)}<br>{STREET}<br>{CITY}, {REGION} {ZIP}<br><a href="tel:{PHONE_LINK}">{PHONE_DISPLAY}</a><br>Mon to Sat, 7am to 7pm</address>
+        <address class="nap">{E(BRAND)}<br>{STREET}<br>{CITY}, {REGION} {ZIP}<br><a href="tel:{PHONE_LINK}">{PHONE_DISPLAY}</a><br>Open 7 days, 7am to 7pm</address>
       </div>
       <div><h4>Services</h4><ul>{svc}<li><a href="/services">All services</a></li></ul></div>
       <div><h4>Areas</h4><ul>{ars}</ul></div>

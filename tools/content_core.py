@@ -32,7 +32,7 @@ CORE = [
   ("Is there a minimum charge?","Yes. A truck and crew still have to drive out, so there is a floor. A single item costs a fraction of a full load."),
   ("Do you charge a trip fee?","No, not anywhere in our service area. Same pricing in Lake Nona as in Kissimmee."),
   ("Why is concrete priced differently?","Because heavy material fills the truck's weight limit long before its space. A quarter load of concrete can weigh more than a full load of furniture, so it is quoted by weight."),
-  ("Do you take payment on the day?","Yes, once the work is done and you are satisfied. We do not ask for a deposit to book."),
+  ("When do I pay?","On completion, once the work is done and you are happy with it."),
   ("Is it cheaper if I carry things to the curb myself?","No. The price is the same, so leave it where it is. In most local HOAs and in Belle Isle you should not put anything at the curb anyway."),
   ("Is a dumpster cheaper?","Sometimes. A dumpster makes sense when debris builds up over weeks. We make more sense when it exists now, because you only pay for what we actually haul and nothing sits in your driveway.")],
 },
@@ -63,7 +63,7 @@ CORE = [
   ("Can you do a whole house same-day?","Rarely. Whole-house jobs are multiple truckloads and usually need a day or more scheduled properly."),
   ("Do I need to be there?","No. Access details and a photo of what goes is often enough, which actually makes same-day easier to arrange."),
   ("How do I speed up the quote?","Photos. A quote from photos takes minutes. A quote that needs a site visit takes a slot in the day that could have been your job."),
-  ("Do you work weekends?","Yes, Monday through Saturday, 7am to 7pm.")],
+  ("Do you work weekends?","Yes. We are open seven days a week, 7am to 7pm.")],
 },
 {
  "slug":"about","name":"About","h1":"About Junk Removal Orlando",
@@ -86,17 +86,17 @@ CORE = [
  "faqs":[
   ("Where are you based?","8305 Narcoossee Rd, Orlando, FL 32827, in the Lake Nona area."),
   ("What areas do you cover?","Orlando city-wide plus roughly twenty-five miles out: Lake Nona, Narcoossee, Conway, Belle Isle, Meadow Woods, Hunters Creek, Azalea Park, Pine Castle, Waterford Lakes, St. Cloud, Kissimmee, Celebration and Buenaventura Lakes. No trip fee anywhere in that area."),
-  ("What are your hours?","Monday through Saturday, 7am to 7pm."),
+  ("What are your hours?","Seven days a week, 7am to 7pm."),
   ("Are you licensed and insured?","Yes. If you are a commercial client or a property manager who needs a certificate of insurance, ask when you book and give us the certificate holder details."),
   ("Do you rent dumpsters?","No. We are a junk removal company, not a dumpster rental company. For a project generating debris over several weeks, a dumpster may genuinely be the better option and we will tell you so."),
   ("Do you do demolition?","Small-scale removal demolition, yes: sheds, decks, fencing, playsets, hot tubs. Anything structural or load-bearing needs a licensed contractor."),
   ("Do you handle hoarding situations?","We handle the hauling side. We are not a biohazard remediation company, and if a property involves waste, decomposition, serious mould or an infestation, that needs a licensed remediation contractor first."),
   ("How do I get a quote?","Send photos. It is the fastest way and it gets you a number that holds rather than a range that moves."),
-  ("Do you take payment up front?","No deposit to book. Payment on completion once you are satisfied.")],
+  ("When do I pay?","On completion, once the work is done and you are happy with it.")],
 },
 {
  "slug":"contact","name":"Contact","h1":"Contact Junk Removal Orlando",
- "blurb":"Call, or send photos and get a quote back in minutes. Free estimates, no obligation, no deposit.",
+ "blurb":"Call, or send photos and get a quote back in minutes. Free estimates, no obligation.",
  "mt":"Contact Junk Removal Orlando",
  "sections":[
   ("The fastest way to get a price",[
@@ -105,7 +105,7 @@ CORE = [
   ("Reach us",[
    "<p><strong>Phone and text:</strong> <a href='tel:+13213644254'>(321) 364-4254</a></p>",
    "<p><strong>Address:</strong> 8305 Narcoossee Rd, Orlando, FL 32827</p>",
-   "<p><strong>Hours:</strong> Monday to Saturday, 7am to 7pm</p>"]),
+   "<p><strong>Hours:</strong> Seven days a week, 7am to 7pm</p>"]),
   ("What to tell us",[
    "<ul class='take-list'><li>What needs to go, with photos</li><li>The address or at least the ZIP code</li><li>Which floor, and whether there is an elevator</li><li>Any gate or garage codes if you will not be there</li><li>Your deadline, if you have one</li><li>Anything hazardous in the pile, so we can flag it early</li></ul>"]),
  ],
@@ -113,10 +113,10 @@ CORE = [
   ("How fast will you get back to me?","During working hours, usually within the hour. Photos get a quote back faster than a phone description."),
   ("Can I text photos instead of calling?","Yes, and it is the option we would recommend. Text them to (321) 364-4254 with your ZIP code."),
   ("Do I need to be home for the quote?","No. Photos are enough for most jobs. For whole-house and hoarding jobs we would rather walk it, and that visit is free."),
-  ("Is the estimate really free?","Yes, in person or from photos, with no obligation and no deposit to book."),
+  ("Is the estimate really free?","Yes, in person or from photos, with no obligation."),
   ("What if I need to cancel?","Tell us before we arrive and there is no charge."),
   ("Can I add things when you get here?","Yes. We requote on the spot before loading, and adding to an existing trip is almost always cheaper than booking a second one."),
-  ("Do you work weekends?","Saturdays yes, 7am to 7pm. Sundays no."),
+  ("Do you work weekends?","Yes, both days. We are open seven days a week, 7am to 7pm."),
   ("How do I pay?","On completion, once the work is done and you are happy with it.")],
 },
 ]
